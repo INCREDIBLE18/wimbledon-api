@@ -39,6 +39,15 @@ app.use(compression());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// URL decoding middleware to handle encoded query parameters
+app.use((req, res, next) => {
+  // Decode URL-encoded query parameters
+  if (req.url.includes('%3D')) {
+    req.url = decodeURIComponent(req.url);
+  }
+  next();
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({
