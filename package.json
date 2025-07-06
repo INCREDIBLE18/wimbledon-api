@@ -10,7 +10,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix"
+    "lint:fix": "eslint src/ --fix",
+    "gcp:deploy-cloud-run": "gcloud run deploy wimbledon-api --source . --platform managed --region us-central1 --allow-unauthenticated",
+    "gcp:deploy-app-engine": "gcloud app deploy",
+    "gcp:build": "gcloud builds submit --config cloudbuild.yaml"
   },
   "keywords": ["wimbledon", "tennis", "api", "rest"],
   "author": "",

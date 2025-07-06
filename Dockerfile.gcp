@@ -1,0 +1,26 @@
+# Multi-stage build for Google Cloud Run
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:20-alpine AS runtime
+
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY . .
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+USER nodejs
+
+EXPOSE 8080
+
+# Google Cloud Run uses PORT environment variable
+ENV PORT=8080
+ENV NODE_ENV=production
+
+CMD ["npm", "start"]
