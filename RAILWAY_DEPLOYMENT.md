@@ -6,7 +6,14 @@ Railway is an excellent cloud platform that deploys directly from GitHub with ze
 
 ### Prerequisites
 - GitHub account with the Wimbledon API repository
-- Railway account (free): https://railway.app
+- Railway account (100% free, no credit card): https://railway.app
+
+### 🆓 Why Railway for Free Deployment?
+- ✅ **No Credit Card Required** for free tier
+- ✅ **500 hours/month** free usage (plenty for APIs)
+- ✅ **Zero configuration** - auto-detects Node.js
+- ✅ **Professional URLs** included
+- ✅ **Auto-deploys** when you push to GitHub
 
 ### Deployment Steps
 
